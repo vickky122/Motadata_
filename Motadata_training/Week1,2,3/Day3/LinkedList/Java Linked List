@@ -1,0 +1,73 @@
+LinkedList<String> playlist = new LinkedList<>();
+playlist.addFirst("SongA");
+playlist.addLast("SongB");
+playlist.remove("SongA");
+
+
+//this is java built in linked list example like how it is implemented in the below custom linked list implementations
+import java.util.LinkedList;
+
+LinkedList<String> playlist = new LinkedList<>();
+playlist.addFirst("SongA");
+playlist.addLast("SongB");
+playlist.remove("SongA");
+// Custom Singly Linked List Implementation
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+    Node tail;
+    int size;
+
+    void addFirst(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+        size++;
+    }
+    void addLast(int data) {
+        Node newNode = new Node(data);
+        if (tail == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        size++;
+    }
+    void deleteFirst() {
+        if (head == null) {
+            System.out.println("List is empty. Cannot delete element.");
+            return;
+        }
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+    }
+    void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+    
+}
+
